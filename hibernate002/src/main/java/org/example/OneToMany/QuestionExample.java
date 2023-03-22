@@ -9,6 +9,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class QuestionExample {
         answerList.add(answer3);
         question.setAnswers(answerList);
 
-        session.save(question);
+//        session.save(question);
 
 
         Question q2 = new Question("6-4 equals?");
@@ -43,8 +44,18 @@ public class QuestionExample {
         Answer a2 = new Answer("7",false);
         Answer a3 = new Answer("1",false);
         List<Answer> answerList1 = new ArrayList<>();
+        answerList1.add(a1);
+        answerList1.add(a2);
+        answerList1.add(a3);
         q2.setAnswers(answerList1);
-        session.save(q2);
+//        session.save(q2);
+
+//        read data from database
+        Query query = session.createQuery("FROM Question q");
+        List<Question> questionList = query.list();
+        questionList.stream().forEach(q -> System.out.println(q));
+
+
 
         transaction.commit();
         session.close();
