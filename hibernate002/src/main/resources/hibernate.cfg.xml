@@ -19,5 +19,8 @@
         <mapping class="org.example.OneToOne.Model.ParcelAddress"></mapping>
         <mapping class="org.example.ManyToMany.Model.Article"></mapping>
         <mapping class="org.example.ManyToMany.Model.Tag"></mapping>
+        <mapping class="org.example.dao.Project"></mapping>
+        <mapping class="org.example.lombok.model.Car"></mapping>
+
     </session-factory>
 </hibernate-configuration>
